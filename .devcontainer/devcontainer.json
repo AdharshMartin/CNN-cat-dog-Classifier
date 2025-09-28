@@ -1,0 +1,35 @@
+{
+    "name": "TensorFlow GPU CNN Project",
+    
+    // Points to the Dockerfile that contains TensorFlow/CUDA setup.
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    
+    // *** GPU Configuration (CRITICAL for ML) ***
+    // This run argument exposes all available NVIDIA GPUs to the container.
+    "runArgs": [
+        "--gpus", 
+        "all"
+    ],
+    
+    // Set the default folder where VS Code will open inside the container.
+    // This path is where your local C:\...\cnn-project folder is mounted.
+    "workspaceFolder": "/workspaces/cnn-project",
+
+    // *** VS Code Customization ***
+    // Install useful VS Code extensions automatically when the container is built.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "eamodio.gitlens"
+            ]
+        }
+    },
+    
+    // Run commands after the container is created.
+    // Ensures pip is up to date before installing project dependencies.
+    "postCreateCommand": "pip install --upgrade pip"
+}

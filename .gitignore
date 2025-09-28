@@ -1,0 +1,9 @@
+
+dataset/
+
+*.keras
+
+__pycache__/
+*.pyc
+
+.vscode/
